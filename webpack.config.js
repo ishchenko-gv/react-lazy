@@ -4,6 +4,9 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
+  output: {
+    publicPath: "/"
+  },
   module: {
     rules: [
       {
@@ -21,12 +24,13 @@ module.exports = {
       template: path.resolve(__dirname, 'public/index.html')
     }),
     new Dotenv({
-      path: './.env', // Path to .env file (this is the default)
-      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
+      path: './.env',
+      safe: true
     })
   ],
   devServer: {
-    historyApiFallback: true,
+    contentBase: "./public",
+    historyApiFallback: true
   },
   devtool: 'eval-cheap-source-map'
 };

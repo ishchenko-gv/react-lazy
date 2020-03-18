@@ -4,13 +4,13 @@ import { logError } from '../../logger';
 
 const cache = {};
 
-export default async function searchMovie(movieTitle) {
-  if (cache[movieTitle]) return cache[movieTitle];
+export default async function searchMovie(movieId) {
+  if (cache[movieId]) return cache[movieId];
 
-  const url = `${baseUrl.IMDB}/?r=json&s=${encodeURIComponent(movieTitle)}`;
+  const url = `${baseUrl.IMDB}/?r=json&i=${movieId}`;
 
   try {
-    const { Search } = await request({
+    const response = await request({
       url,
       method: 'GET',
       headers: {
@@ -19,9 +19,9 @@ export default async function searchMovie(movieTitle) {
       }
     });
 
-    cache[movieTitle] = Search;
+    cache[movieId] = response;
 
-    return Search;
+    return response;
   } catch (e) {
     logError(e);
   }

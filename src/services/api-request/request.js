@@ -9,7 +9,7 @@
  * 
  * @return {Promise}
  */
-export default function request (opts) {
+export default async function request (opts) {
   const {
     url,
     method = 'GET',
@@ -17,9 +17,11 @@ export default function request (opts) {
     headers
   } = opts;
 
-  return fetch(url, {
+  const response = await fetch(url, {
     method,
     body,
     headers
-  })
+  });
+
+  return await response.json();
 }
