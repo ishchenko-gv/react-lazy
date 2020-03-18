@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: './src/index.js',
   output: {
-    publicPath: "/"
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -29,7 +29,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: "./public",
+    contentBase: './public',
     historyApiFallback: true
   },
   devtool: 'eval-cheap-source-map'

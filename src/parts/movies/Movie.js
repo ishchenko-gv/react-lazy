@@ -17,9 +17,22 @@ export default function Movie() {
 
   if (!movieData) return 'loading';
 
+  const {
+    title,
+    ratings
+  } = movieData;
+
   return (
     <div>
-      {movieData.Title}
+      {title}
+      <ul>
+        {ratings.map(rating => (
+          <li key={rating.source}>
+            <div>{rating.source}</div>
+            <div>{rating.value}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

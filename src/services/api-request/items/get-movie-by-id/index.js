@@ -1,10 +1,11 @@
-import request from '../request';
-import { baseUrl } from '../base-url';
-import { logError } from '../../logger';
+import request from '../../request';
+import { baseUrl } from '../../base-url';
+import { logError } from '../../../logger';
+import mapResponse from './map-response';
 
 const cache = {};
 
-export default async function searchMovie(movieId) {
+export default async function getMovieById(movieId) {
   if (cache[movieId]) return cache[movieId];
 
   const url = `${baseUrl.IMDB}/?r=json&i=${movieId}`;
@@ -19,9 +20,11 @@ export default async function searchMovie(movieId) {
       }
     });
 
-    cache[movieId] = response;
+    const normalizedResponse = mapResponse(response);
 
-    return response;
+    cache[movieId] = normalizedResponse;
+
+    return normalizedResponse;
   } catch (e) {
     logError(e);
   }
