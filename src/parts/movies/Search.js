@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 
 import { findMoviesByTitle, getMovieById } from '../../services/api-request';
+import Image from '../../kit/Image';
 
 export default function Search() {
   const { url } = useRouteMatch();
@@ -24,7 +25,7 @@ export default function Search() {
           <div>{movie.title}</div>
           <div>{movie.year}</div>
           <Link to={`${url}/${movie.id}`}>
-            <img src={movie.posterURL} onMouseEnter={() => getMovieById(movie.id)} />
+            <Image width={300} height={400} src={movie.posterURL} onMouseEnter={() => getMovieById(movie.id)} />
           </Link>
         </div>
       ))}

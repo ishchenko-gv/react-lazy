@@ -6,6 +6,7 @@ export default function mapResponse (response) {
     Genre,
     Director,
     Actors,
+    Plot,
     Country,
     Poster,
     Ratings
@@ -23,6 +24,7 @@ export default function mapResponse (response) {
     genre: Genre,
     director: Director,
     actors: Actors,
+    plot: Plot,
     country: Country,
     posterURL: Poster,
     ratings
