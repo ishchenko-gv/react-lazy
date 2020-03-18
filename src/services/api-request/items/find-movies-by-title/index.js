@@ -5,7 +5,7 @@ import { logError } from '../../../logger';
 
 const cache = {};
 
-export default async function findMovieByTitle(movieTitle) {
+export default async function findMoviesByTitle(movieTitle) {
   if (cache[movieTitle]) return cache[movieTitle];
 
   const url = `${baseUrl.IMDB}/?r=json&s=${encodeURIComponent(movieTitle)}`;

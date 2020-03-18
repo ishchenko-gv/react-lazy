@@ -7,8 +7,6 @@ import Movie from './Movie';
 export default function Movies() {
   const { path } = useRouteMatch();
 
-  console.log(path)
-
   return (
     <Switch>
       <Route exact path={path} component={Search} />

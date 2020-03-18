@@ -1,4 +1,4 @@
-import findMovieByTitle from './items/find-movie-by-title';
+import findMoviesByTitle from './items/find-movies-by-title';
 import getMovieById from './items/get-movie-by-id';
 
-export { findMovieByTitle, getMovieById };
+export { findMoviesByTitle, getMovieById };
