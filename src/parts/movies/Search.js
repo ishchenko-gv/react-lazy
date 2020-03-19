@@ -8,11 +8,11 @@ export default function Search() {
   const { url } = useRouteMatch();
   const [movies, setMovies] = useState(null);
 
-  const fetchMovies = async () => {
-    setMovies(await findMoviesByTitle('batman'))
-  };
-
   useEffect(() => {
+    const fetchMovies = async () => {
+      setMovies(await findMoviesByTitle('batman'))
+    };
+
     fetchMovies();
   }, []);
 

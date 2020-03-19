@@ -14,7 +14,7 @@ export default function Movie() {
     };
 
     getMovie();
-  }, []);
+  }, [movieId]);
 
   if (!movieData) return 'loading';
 
@@ -31,7 +31,7 @@ export default function Movie() {
           </li>
         ))}
       </ul>
-      <Image src={posterURL} width={300} height={400} alt='' />
+      <Image src={posterURL} width={300} height={400} />
       <p>{plot}</p>
     </div>
   );
