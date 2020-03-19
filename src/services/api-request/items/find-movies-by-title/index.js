@@ -3,12 +3,8 @@ import { baseUrl } from '../../base-url';
 import mapResponse from './map-response';
 import { logError } from '../../../logger';
 
-const cache = {};
-
-export default async function findMoviesByTitle(movieTitle) {
-  if (cache[movieTitle]) return cache[movieTitle];
-
-  const url = `${baseUrl.IMDB}/?r=json&s=${encodeURIComponent(movieTitle)}`;
+export default async function findMoviesByTitle(movieTitle, page = 1) {
+  const url = `${baseUrl.IMDB}/?r=json&page=${page}&s=${encodeURIComponent(movieTitle)}`;
 
   try {
     const { Search } = await request({
@@ -20,11 +16,7 @@ export default async function findMoviesByTitle(movieTitle) {
       }
     });
 
-    const normalizedResponse = mapResponse(Search);
-
-    cache[movieTitle] = normalizedResponse;
-
-    return normalizedResponse;
+    return mapResponse(Search);
   } catch (e) {
     logError(e);
   }
