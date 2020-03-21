@@ -39,7 +39,7 @@ export default function Movie() {
           </li>
         ))}
       </ul>
-      <Image src={posterURL} width='300' height='400' />
+      <Image src={posterURL} width='300px' height='400px' />
       <p>{plot}</p>
     </div>
   );

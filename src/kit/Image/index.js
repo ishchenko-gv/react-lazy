@@ -34,8 +34,8 @@ export default function Image(props) {
   return (
     <picture
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
+        width,
+        height,
         display: 'inline-block',
         overflow: 'hidden'
       }}

@@ -3,6 +3,7 @@ parser: babel-eslint
 extends: airbnb
 plugins:
   - react
+  - react-hooks
   - import
   - async-await
   - jest

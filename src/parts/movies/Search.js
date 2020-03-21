@@ -58,7 +58,7 @@ function Search(props) {
                 ref={isLastItem ? lastItemRef : null}
                 to={`${url}/${movie.id}`}
               >
-                <Image width='300' height='400' src={movie.posterURL} />
+                <Image width='300px' height='400px' src={movie.posterURL} />
               </Link>
             </div>
           );
