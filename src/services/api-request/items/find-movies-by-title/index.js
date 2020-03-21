@@ -3,6 +3,20 @@ import { baseUrl } from '../../base-url';
 import mapResponse from './map-response';
 import { logError } from '../../../logger';
 
+/**
+ * Find movies by it's title
+ * 
+ * @param {String} movieTitle 
+ * @param {Number} page 
+ * 
+ * @typedef {Object} Movie
+ *  @prop {String} id
+ *  @prop {String} title
+ *  @prop {String} posterURL
+ *  @prop {String} year
+ * 
+ * @return {Array<Movie>}
+ */
 export default async function findMoviesByTitle(movieTitle, page = 1) {
   const url = `${baseUrl.IMDB}/?r=json&page=${page}&s=${encodeURIComponent(movieTitle)}`;
 

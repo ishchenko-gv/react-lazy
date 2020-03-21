@@ -1,3 +1,10 @@
+/**
+ * Map response from API for internal usage
+ * 
+ * @param {Object} response 
+ * 
+ * @return {Object}
+ */
 export default function mapResponse (response) {
   const {
     Title,
