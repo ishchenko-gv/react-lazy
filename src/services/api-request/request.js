@@ -2,7 +2,7 @@
  * Perform HTTP request
  *
  * @param {Object} opts
- *  @prop {String} url Requested resourse URL
+ *  @prop {String} url Requested resource URL
  *  @prop {String} [method=GET] HTTP method
  *  @prop {Object|string} body
  *  @prop {Object} headers
