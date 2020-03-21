@@ -1,15 +1,9 @@
-const responseTypes = {
-  JSON: 'json',
-  BLOB: 'blob',
-  TEXT: 'text'
-};
-
 /**
  * Perform HTTP request
  *
  * @param {Object} opts
  *  @prop {String} url Requested resourse URL
- *  @prop {String} method HTTP method
+ *  @prop {String} [method=GET] HTTP method
  *  @prop {Object|string} body
  *  @prop {Object} headers
  *  @prop {String(json | blob | text)} [responseType=json]
@@ -22,7 +16,7 @@ export default async function request(opts) {
     method = 'GET',
     body,
     headers,
-    responseType = responseTypes.JSON
+    responseType = 'json'
   } = opts;
 
   const response = await fetch(url, {
@@ -32,11 +26,11 @@ export default async function request(opts) {
   });
 
   switch (responseType) {
-    case responseTypes.JSON:
+    case 'json':
       return await response.json();
-    case responseTypes.BLOB:
+    case 'blob':
       return await response.blob();
-    case responseTypes.TEXT:
+    case 'text':
       return await response.text();
   }
 }
