@@ -8,7 +8,7 @@
  *  @prop {Object} headers
  *  @prop {String(json | blob | text)} [responseType=json]
  *
- * @return {Promise<Object|string|null>}
+ * @return {Promise.<Object|string|null>}
  */
 export default async function request(opts) {
   const {

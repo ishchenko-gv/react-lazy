@@ -22,9 +22,9 @@ import { logError } from '../../../logger';
  *  @prop {String} plot
  *  @prop {String} country
  *  @prop {String} posterURL
- *  @prop {Array<Rating>} ratings
+ *  @prop {Array.<Rating>} ratings
  *
- * @return {Movie}
+ * @return {Promise.<Movie>}
  */
 export default async function getMovieById(movieId) {
   const url = `${baseUrl.IMDB_RAPID_API}/?r=json&i=${movieId}`;

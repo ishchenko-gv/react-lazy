@@ -24,3 +24,4 @@ rules:
   no-use-before-define: 0
   operator-linebreak: 0
   no-console: 0
+  max-len: ['error', 100]

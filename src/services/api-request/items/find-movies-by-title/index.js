@@ -15,12 +15,10 @@ import { logError } from '../../../logger';
  *  @prop {String} posterURL
  *  @prop {String} year
  *
- * @return {Array<Movie>}
+ * @return {Promise.<Movie[]>}
  */
 export default async function findMoviesByTitle(movieTitle, page = 1) {
-  const url = `${
-    baseUrl.IMDB_RAPID_API
-  }/?r=json&page=${page}&s=${encodeURIComponent(movieTitle)}`;
+  const url = `${baseUrl.IMDB_RAPID_API}/?r=json&page=${page}&s=${encodeURIComponent(movieTitle)}`;
 
   try {
     const { Search } = await request({
