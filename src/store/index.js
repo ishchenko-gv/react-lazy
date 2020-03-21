@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 const initialState = {
   movies: null
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,7 +22,7 @@ const devtool = window.__REDUX_DEVTOOLS_EXTENSION__
   : f => f;
 
 const store = createStore(
-  reducer, 
+  reducer,
   compose(
     applyMiddleware(thunk),
     devtool

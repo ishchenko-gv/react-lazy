@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect
+} from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getMovieById } from '../../services/api-request';
@@ -18,7 +21,12 @@ export default function Movie() {
 
   if (!movieData) return 'loading';
 
-  const { title, ratings, posterURL, plot } = movieData;
+  const {
+    title,
+    ratings,
+    posterURL,
+    plot
+  } = movieData;
 
   return (
     <div>
@@ -31,7 +39,7 @@ export default function Movie() {
           </li>
         ))}
       </ul>
-      <Image src={posterURL} width={300} height={400} />
+      <Image src={posterURL} width='300' height='300' />
       <p>{plot}</p>
     </div>
   );

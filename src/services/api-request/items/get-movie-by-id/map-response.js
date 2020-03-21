@@ -1,11 +1,11 @@
 /**
  * Map response from API for internal usage
- * 
- * @param {Object} response 
- * 
+ *
+ * @param {Object} response
+ *
  * @return {Object}
  */
-export default function mapResponse (response) {
+export default function mapResponse(response) {
   const {
     Title,
     Year,
@@ -22,7 +22,7 @@ export default function mapResponse (response) {
   const ratings = Ratings.map(rating => ({
     source: rating.Source,
     value: rating.Value
-  }))
+  }));
 
   return {
     title: Title,
@@ -35,5 +35,5 @@ export default function mapResponse (response) {
     country: Country,
     posterURL: Poster,
     ratings
-  }
+  };
 }

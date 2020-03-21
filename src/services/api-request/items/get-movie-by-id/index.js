@@ -5,13 +5,13 @@ import { logError } from '../../../logger';
 
 /**
  * Fetch movie data by it's id
- * 
- * @param {String} movieId 
- * 
+ *
+ * @param {String} movieId
+ *
  * @typedef {Object} Rating
  *  @prop {String} source
  *  @prop {String} value
- * 
+ *
  * @typedef {Object} Movie
  *  @prop {String} title
  *  @prop {String} year
@@ -23,7 +23,7 @@ import { logError } from '../../../logger';
  *  @prop {String} country
  *  @prop {String} posterURL
  *  @prop {Array<Rating>} ratings
- * 
+ *
  * @return {Movie}
  */
 export default async function getMovieById(movieId) {

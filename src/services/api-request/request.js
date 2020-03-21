@@ -8,7 +8,7 @@
  *  @prop {Object} headers
  *  @prop {String(json | blob | text)} [responseType=json]
  *
- * @return {Promise}
+ * @return {Promise<Object|string|null>}
  */
 export default async function request(opts) {
   const {
@@ -32,5 +32,7 @@ export default async function request(opts) {
       return await response.blob();
     case 'text':
       return await response.text();
+    default:
+      return null;
   }
 }

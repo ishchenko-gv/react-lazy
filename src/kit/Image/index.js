@@ -1,7 +1,27 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  alt: PropTypes.string
+};
+
+Image.defaultProps = {
+  width: 'auto',
+  height: 'auto',
+  alt: ''
+};
 
 export default function Image(props) {
-  const { src, width, height, alt = '', ...restProps } = props;
+  const {
+    src,
+    width,
+    height,
+    alt,
+    ...restProps
+  } = props;
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadFailed, setIsLoadFailed] = useState(false);
 
@@ -12,7 +32,14 @@ export default function Image(props) {
   };
 
   return (
-    <picture style={{width, height, display: 'inline-block', overflow: 'hidden'}}>
+    <picture
+      style={{
+        width,
+        height,
+        display: 'inline-block',
+        overflow: 'hidden'
+      }}
+    >
       {isLoading && 'loading'}
       {isLoadFailed && 'load failed'}
       {!isLoadFailed && (

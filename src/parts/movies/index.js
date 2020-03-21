@@ -12,5 +12,5 @@ export default function Movies() {
       <Route exact path={path} component={Search} />
       <Route path={`${path}/:movieId`} component={Movie} />
     </Switch>
-  )
+  );
 }
