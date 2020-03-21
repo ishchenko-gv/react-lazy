@@ -27,7 +27,7 @@ import mapResponse from './map-response';
  * @return {Movie}
  */
 export default async function getMovieById(movieId) {
-  const url = `${baseUrl.IMDB}/?r=json&i=${movieId}`;
+  const url = `${baseUrl.IMDB_RAPID_API}/?r=json&i=${movieId}`;
 
   try {
     const response = await request({

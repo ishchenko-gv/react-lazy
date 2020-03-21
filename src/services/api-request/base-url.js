@@ -1,3 +1,3 @@
 export const baseUrl = {
-  IMDB: 'https://movie-database-imdb-alternative.p.rapidapi.com'
+  IMDB_RAPID_API: 'https://movie-database-imdb-alternative.p.rapidapi.com'
 };
