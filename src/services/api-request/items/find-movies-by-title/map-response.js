@@ -1,7 +1,7 @@
 /**
  * Map response from API for internal usage
  * 
- * @param {Object} response 
+ * @param {Array} response 
  * 
  * @return {Array<Object>}
  */

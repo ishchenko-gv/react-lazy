@@ -1,7 +1,7 @@
 import request from '../../request';
 import { baseUrl } from '../../base-url';
-import { logError } from '../../../logger';
 import mapResponse from './map-response';
+import { logError } from '../../../logger';
 
 /**
  * Fetch movie data by it's id
