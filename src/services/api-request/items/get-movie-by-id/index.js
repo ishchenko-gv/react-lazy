@@ -8,7 +8,11 @@ import mapResponse from './map-response';
  * 
  * @param {String} movieId 
  * 
- * @return {Object}
+ * @typedef {Object} Rating
+ *  @prop {String} source
+ *  @prop {String} value
+ * 
+ * @typedef {Object} Movie
  *  @prop {String} title
  *  @prop {String} year
  *  @prop {String} released
@@ -18,7 +22,9 @@ import mapResponse from './map-response';
  *  @prop {String} plot
  *  @prop {String} country
  *  @prop {String} posterURL
- *  @prop {Array<Object>} ratings
+ *  @prop {Array<Rating>} ratings
+ * 
+ * @return {Movie}
  */
 export default async function getMovieById(movieId) {
   const url = `${baseUrl.IMDB}/?r=json&i=${movieId}`;
