@@ -26,6 +26,7 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     devtool
-));
+  )
+);
 
 export default store;

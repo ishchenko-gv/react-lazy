@@ -1,8 +1,8 @@
 /**
  * Map response from API for internal usage
- * 
- * @param {Array} response 
- * 
+ *
+ * @param {Array} response
+ *
  * @return {Array<Object>}
  */
 export default function mapResponse(response) {
