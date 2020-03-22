@@ -1,4 +1,4 @@
-export function createIntersectionObserver(callback, observerOpts = {}) {
+export function createIntersectionObserver (callback, observerOpts = {}) {
   if (!('IntersectionObserver' in window)) return null;
 
   const handleIntersection = entries => {

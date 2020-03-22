@@ -5,7 +5,7 @@
  *
  * @return {Array.<Object>}
  */
-export default function mapResponse(response) {
+export default function mapResponse (response) {
   if (!response) return [];
 
   return response.map(item => {

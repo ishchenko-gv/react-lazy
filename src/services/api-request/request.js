@@ -10,7 +10,7 @@
  *
  * @return {Promise.<Object|string|null>}
  */
-export default async function request(opts) {
+export default async function request (opts) {
   const {
     url,
     method = 'GET',

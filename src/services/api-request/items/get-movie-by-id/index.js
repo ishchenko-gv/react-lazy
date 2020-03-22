@@ -26,7 +26,7 @@ import { logError } from '../../../logger';
  *
  * @return {Promise.<Movie>}
  */
-export default async function getMovieById(movieId) {
+export default async function getMovieById (movieId) {
   const url = `${baseUrl.IMDB_RAPID_API}/?r=json&i=${movieId}`;
 
   try {

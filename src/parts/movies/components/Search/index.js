@@ -35,7 +35,7 @@ Search.defaultProps = {
   movies: []
 };
 
-function Search(props) {
+function Search (props) {
   const {
     movieTitle,
     movies,

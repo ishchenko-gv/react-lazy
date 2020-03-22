@@ -5,7 +5,7 @@
  *
  * @return {Object|null}
  */
-export default function mapResponse(response) {
+export default function mapResponse (response) {
   if (!response) return null;
 
   const {

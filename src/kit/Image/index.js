@@ -14,7 +14,7 @@ Image.defaultProps = {
   alt: ''
 };
 
-export default function Image(props) {
+export default function Image (props) {
   const {
     src,
     width,

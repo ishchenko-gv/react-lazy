@@ -7,7 +7,7 @@ const Home = lazy(() => import('../home'));
 const Movies = lazy(() => import('../movies/components/Movies'));
 const About = lazy(() => import('../about'));
 
-export default function App() {
+export default function App () {
   return (
     <>
       <Navigation />

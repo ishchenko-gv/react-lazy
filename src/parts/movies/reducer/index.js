@@ -5,7 +5,7 @@ const initialState = {
   list: []
 };
 
-export default function movies(state = initialState, action) {
+export default function movies (state = initialState, action) {
   switch (action.type) {
     case actionTypes.SET_MOVIE_TITLE:
       return {
