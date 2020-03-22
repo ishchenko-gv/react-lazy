@@ -3,10 +3,10 @@
  *
  * @param {Array} response
  *
- * @return {Array.<Object>|null}
+ * @return {Array.<Object>}
  */
 export default function mapResponse(response) {
-  if (!response) return null;
+  if (!response) return [{}];
 
   return response.map(item => {
     const {
