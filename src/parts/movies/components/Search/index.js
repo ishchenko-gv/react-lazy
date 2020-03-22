@@ -1,7 +1,6 @@
 import React, {
   useEffect,
-  useRef,
-  useState
+  useRef
 } from 'react';
 import PropTypes from 'prop-types';
 import { useRouteMatch, Link } from 'react-router-dom';
@@ -10,10 +9,11 @@ import { connect } from 'react-redux';
 
 import styles from './styles.scss';
 
-import { findMoviesByTitle } from '../../../../services/api-request';
 import Image from '../../../../kit/Image';
-import { setMovieTitle, saveMovies, addMovies } from '../../actions';
+import { setMovieTitle } from '../../actions';
 import useIntersectionObserver from '../../../../hooks/use-intersection-observer';
+import areAllMoviesLoaded from '../../selectors/are-all-movies-loaded';
+import fetchMovies from '../../actions/fetch-movies';
 
 Search.propTypes = {
   movieTitle: PropTypes.string,
@@ -25,9 +25,9 @@ Search.propTypes = {
       prosterURL: PropTypes.string
     })
   ),
+  areAllMoviesLoaded: PropTypes.bool.isRequired,
   onMovieTitleSet: PropTypes.func.isRequired,
-  onMoviesSave: PropTypes.func.isRequired,
-  onMoviesAdd: PropTypes.func.isRequired
+  onMoviesFetch: PropTypes.func.isRequired
 };
 
 Search.defaultProps = {
@@ -39,38 +39,28 @@ function Search (props) {
   const {
     movieTitle,
     movies,
+    areAllMoviesLoaded,
     onMovieTitleSet,
-    onMoviesSave,
-    onMoviesAdd
+    onMoviesFetch
   } = props;
+
   const { url } = useRouteMatch();
-  const [pageCounter, setPageCounter] = useState(1);
   const lastItemRef = useRef(null);
   const [isIntersecting] = useIntersectionObserver(lastItemRef);
-
-  const initialFetchMovies = async title => {
-    setPageCounter(1);
-    onMoviesSave(await findMoviesByTitle(title));
-  };
-
-  const additionalFetchMovies = async (title, conuter) => {
-    setPageCounter(count => count + 1);
-    onMoviesAdd(await findMoviesByTitle(title, conuter + 1));
-  };
-
-  const [initialFetchMoviesDebounce] = useDebouncedCallback(initialFetchMovies, 400);
+  const [debouncedOnMoviesFetch] = useDebouncedCallback(onMoviesFetch, 400);
 
   useEffect(() => {
-    if (isIntersecting) additionalFetchMovies(movieTitle, pageCounter);
+    console.log('sdf');
+    if (isIntersecting) onMoviesFetch();
   }, [isIntersecting]);
 
   useEffect(() => {
-    initialFetchMovies(movieTitle);
+    if (!movieTitle) onMoviesFetch({ isInitial: true });
   }, []);
 
   const handleInput = value => {
     onMovieTitleSet(value);
-    initialFetchMoviesDebounce(value);
+    debouncedOnMoviesFetch({ clear: true });
   };
 
   return (
@@ -84,9 +74,12 @@ function Search (props) {
       <div className={styles.moviesWrap}>
         {movies && movies.map((movie, index, array) => {
           const isLastItem = index === array.length - 1;
+          const elementRef = isLastItem && !areAllMoviesLoaded
+            ? lastItemRef
+            : null;
 
           return (
-            <div key={`${movie.id}`} ref={isLastItem ? lastItemRef : null}>
+            <div key={`${movie.id}`} ref={elementRef}>
               <div>{movie.title}</div>
               <div>{movie.year}</div>
               <Link to={`${url}/${movie.id}`}>
@@ -102,13 +95,13 @@ function Search (props) {
 
 const mapState = state => ({
   movieTitle: state.movies.movieTitle,
-  movies: state.movies.list
+  movies: state.movies.list,
+  areAllMoviesLoaded: areAllMoviesLoaded(state)
 });
 
 const mapDispatch = dispatch => ({
   onMovieTitleSet: title => dispatch(setMovieTitle(title)),
-  onMoviesSave: movies => dispatch(saveMovies(movies)),
-  onMoviesAdd: movies => dispatch(addMovies(movies))
+  onMoviesFetch: opts => dispatch(fetchMovies(opts))
 });
 
 export default connect(mapState, mapDispatch)(Search);

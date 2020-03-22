@@ -21,7 +21,7 @@ export default async function findMoviesByTitle (movieTitle, page = 1) {
   const url = `${baseUrl.IMDB_RAPID_API}/?r=json&page=${page}&s=${encodeURIComponent(movieTitle)}`;
 
   try {
-    const { Search } = await request({
+    const response = await request({
       url,
       headers: {
         'x-rapidapi-host': process.env.RAPID_API_HOST,
@@ -29,7 +29,7 @@ export default async function findMoviesByTitle (movieTitle, page = 1) {
       }
     });
 
-    return normalizeResponse(Search);
+    return normalizeResponse(response);
   } catch (e) {
     logError(e);
   }

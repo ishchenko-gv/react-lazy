@@ -1,26 +1,33 @@
 /**
  * Map response from API for internal usage
  *
- * @param {Array} response
+ * @param {Object} response
  *
  * @return {Array.<Object>}
  */
 export default function mapResponse (response) {
-  if (!response) return [];
+  const { Search, totalResults: foundMoviesCount } = response;
 
-  return response.map(item => {
+  if (!Search) return [];
+
+  const list = Search.map(item => {
     const {
-      imdbID,
-      Title,
-      Poster,
-      Year
+      imdbID: id,
+      Title: title,
+      Poster: posterURL,
+      Year: year
     } = item;
 
     return {
-      id: imdbID,
-      title: Title,
-      posterURL: Poster,
-      year: Year
+      id,
+      title,
+      posterURL,
+      year
     };
   });
+
+  return {
+    list,
+    foundMoviesCount
+  };
 }
