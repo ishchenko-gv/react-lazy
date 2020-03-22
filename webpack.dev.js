@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -12,15 +13,25 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-syntax-dynamic-import']
-        }
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          'sass-loader'
+        ]
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html')
     }),

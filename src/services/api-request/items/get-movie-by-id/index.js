@@ -1,6 +1,6 @@
 import request from '../../request';
 import { baseUrl } from '../../base-url';
-import mapResponse from './map-response';
+import normalizeResponse from './normalize-response';
 import { logError } from '../../../logger';
 
 /**
@@ -39,7 +39,7 @@ export default async function getMovieById(movieId) {
       }
     });
 
-    return mapResponse(response);
+    return normalizeResponse(response);
   } catch (e) {
     logError(e);
   }

@@ -25,14 +25,21 @@ export default async function request(opts) {
     headers
   });
 
+  let result;
+
   switch (responseType) {
     case 'json':
-      return await response.json();
+      result = await response.json();
+      break;
     case 'blob':
-      return await response.blob();
+      result = await response.blob();
+      break;
     case 'text':
-      return await response.text();
+      result = await response.text();
+      break;
     default:
-      return null;
+      result = null;
   }
+
+  return result;
 }

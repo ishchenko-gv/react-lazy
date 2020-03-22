@@ -3,9 +3,11 @@
  *
  * @param {Array} response
  *
- * @return {Array<Object>}
+ * @return {Array.<Object>|null}
  */
 export default function mapResponse(response) {
+  if (!response) return null;
+
   return response.map(item => {
     const {
       imdbID,

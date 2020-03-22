@@ -1,21 +1,16 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import {
+  createStore,
+  combineReducers,
+  compose,
+  applyMiddleware
+} from 'redux';
 import thunk from 'redux-thunk';
 
-const initialState = {
-  movies: null
-};
+import movies from '../parts/movies/reducer';
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'movies/saveMovies':
-      return {
-        ...state,
-        movies: action.movies
-      };
-    default:
-      return state;
-  }
-};
+const reducer = combineReducers({
+  movies
+});
 
 const devtool = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Navigation from './Navigation';
 
 const Home = lazy(() => import('../home'));
-const Movies = lazy(() => import('../movies'));
+const Movies = lazy(() => import('../movies/components/Movies'));
 const About = lazy(() => import('../about'));
 
 export default function App() {

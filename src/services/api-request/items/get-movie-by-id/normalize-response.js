@@ -3,9 +3,11 @@
  *
  * @param {Object} response
  *
- * @return {Object}
+ * @return {Object|null}
  */
 export default function mapResponse(response) {
+  if (!response) return null;
+
   const {
     Title,
     Year,
