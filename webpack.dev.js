@@ -43,9 +43,9 @@ module.exports = {
   resolve: {
     alias: {
       hooks: path.resolve(__dirname, 'src/hooks'),
-      kit: path.resolve('src/kit'),
-      services: path.resolve('src/services'),
-      styles: path.resolve('src/styles')
+      kit: path.resolve(__dirname, 'src/kit'),
+      services: path.resolve(__dirname, 'src/services'),
+      styles: path.resolve(__dirname, 'src/styles')
     }
   },
   devServer: {
