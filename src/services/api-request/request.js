@@ -25,6 +25,8 @@ export default async function request (opts) {
     headers
   });
 
+  if (response.Response === 'False') throw new Error(response.Error);
+
   let result;
 
   switch (responseType) {

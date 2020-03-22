@@ -2,7 +2,7 @@ import { findMoviesByTitle } from 'services/api-request';
 import { logError } from 'services/logger';
 
 import areAllMoviesLoaded from '../selectors/are-all-movies-loaded';
-import { saveMovies, setPageSize } from '../actions';
+import { saveMovies, setPageSize, clearMovies } from '../actions';
 
 export default function fetchMovies (opts = {}) {
   return async (dispatch, getState) => {
@@ -53,6 +53,7 @@ export default function fetchMovies (opts = {}) {
 
       dispatch(saveMovies(result));
     } catch (e) {
+      dispatch(clearMovies());
       logError(e);
     }
   };

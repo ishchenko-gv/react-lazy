@@ -20,6 +20,12 @@ export default function movies (state = initialState, action) {
         list: action.movies.list,
         foundMoviesCount: action.movies.foundMoviesCount
       };
+    case actionTypes.CLEAR_MOVIES:
+      return {
+        ...state,
+        list: [],
+        foundMoviesCount: 0
+      }
     case actionTypes.SET_PAGE_SIZE:
       return {
         ...state,

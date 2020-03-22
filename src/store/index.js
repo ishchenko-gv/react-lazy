@@ -6,7 +6,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import movies from '../parts/movies/reducer';
+import movies from '../ui-parts/movies/reducer';
 
 const reducer = combineReducers({
   movies

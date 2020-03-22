@@ -10,6 +10,10 @@ export const saveMovies = movies => ({
   movies
 });
 
+export const clearMovies = () => ({
+  type: actionTypes.CLEAR_MOVIES
+});
+
 export const setPageSize = size => ({
   type: actionTypes.SET_PAGE_SIZE,
   size

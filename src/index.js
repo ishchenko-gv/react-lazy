@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/index.scss';
 
 import store from './store';
-import Shell from './parts/shell';
+import Shell from './ui-parts/shell';
 
 ReactDOM.render(
   <Provider store={store}>
