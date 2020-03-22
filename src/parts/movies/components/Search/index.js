@@ -7,11 +7,12 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
 import { connect } from 'react-redux';
 
+import Image from 'kit/Image';
+import useIntersectionObserver from 'hooks/use-intersection-observer';
+
 import styles from './styles.scss';
 
-import Image from '../../../../kit/Image';
 import { setMovieTitle } from '../../actions';
-import useIntersectionObserver from '../../../../hooks/use-intersection-observer';
 import areAllMoviesLoaded from '../../selectors/are-all-movies-loaded';
 import fetchMovies from '../../actions/fetch-movies';
 

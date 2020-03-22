@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createIntersectionObserver } from '../services/intersection-observer';
+import { createIntersectionObserver } from 'services/intersection-observer';
 
 export default function useIntersectionObserver (ref, options) {
   const [isIntersecting, setIsIntersecting] = useState(false);

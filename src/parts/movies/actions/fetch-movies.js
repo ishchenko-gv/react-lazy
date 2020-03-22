@@ -1,7 +1,8 @@
+import { findMoviesByTitle } from 'services/api-request';
+import { logError } from 'services/logger';
+
 import areAllMoviesLoaded from '../selectors/are-all-movies-loaded';
 import { saveMovies, setPageSize } from '../actions';
-import { findMoviesByTitle } from '../../../services/api-request';
-import { logError } from '../../../services/logger';
 
 export default function fetchMovies (opts = {}) {
   return async (dispatch, getState) => {

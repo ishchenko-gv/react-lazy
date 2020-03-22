@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMovieById } from '../../../services/api-request';
-import Image from '../../../kit/Image';
+import { getMovieById } from 'services/api-request';
+import Image from 'kit/Image';
 
 export default function Movie () {
   const { movieId } = useParams();

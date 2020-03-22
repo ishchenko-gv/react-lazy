@@ -40,6 +40,14 @@ module.exports = {
       safe: true
     })
   ],
+  resolve: {
+    alias: {
+      hooks: path.resolve(__dirname, 'src/hooks'),
+      kit: path.resolve('src/kit'),
+      services: path.resolve('src/services'),
+      styles: path.resolve('src/styles')
+    }
+  },
   devServer: {
     contentBase: './public',
     historyApiFallback: true
