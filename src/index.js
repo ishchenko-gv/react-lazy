@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import './styles/index.scss';
+
 import store from './store';
 import Shell from './parts/shell';
 

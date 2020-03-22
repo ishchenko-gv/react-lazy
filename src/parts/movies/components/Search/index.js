@@ -8,11 +8,12 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { useDebouncedCallback } from 'use-debounce';
 import { connect } from 'react-redux';
 
+import styles from './styles.scss';
+
 import { findMoviesByTitle } from '../../../../services/api-request';
 import Image from '../../../../kit/Image';
-import styles from './styles.scss';
 import { setMovieTitle, saveMovies, addMovies } from '../../actions';
-import useIntersectionObserver from './use-intersection-observer';
+import useIntersectionObserver from '../../../../hooks/use-intersection-observer';
 
 Search.propTypes = {
   movieTitle: PropTypes.string,
@@ -43,8 +44,8 @@ function Search(props) {
     onMoviesAdd
   } = props;
   const { url } = useRouteMatch();
-  const lastItemRef = useRef(null);
   const [pageCounter, setPageCounter] = useState(1);
+  const lastItemRef = useRef(null);
   const [isIntersecting] = useIntersectionObserver(lastItemRef);
 
   const initialFetchMovies = async title => {
@@ -53,16 +54,14 @@ function Search(props) {
   };
 
   const additionalFetchMovies = async (title, conuter) => {
-    onMoviesAdd(await findMoviesByTitle(title, conuter));
+    setPageCounter(count => count + 1);
+    onMoviesAdd(await findMoviesByTitle(title, conuter + 1));
   };
 
   const [initialFetchMoviesDebounce] = useDebouncedCallback(initialFetchMovies, 400);
 
   useEffect(() => {
-    if (isIntersecting) {
-      additionalFetchMovies(movieTitle, pageCounter);
-      setPageCounter(count => count + 1);
-    }
+    if (isIntersecting) additionalFetchMovies(movieTitle, pageCounter);
   }, [isIntersecting]);
 
   useEffect(() => {
@@ -75,7 +74,7 @@ function Search(props) {
   };
 
   return (
-    <div>
+    <div className={styles.wrap}>
       <h2>Movies</h2>
       <input
         type='text'
@@ -90,9 +89,7 @@ function Search(props) {
             <div key={`${movie.id}`} ref={isLastItem ? lastItemRef : null}>
               <div>{movie.title}</div>
               <div>{movie.year}</div>
-              <Link
-                to={`${url}/${movie.id}`}
-              >
+              <Link to={`${url}/${movie.id}`}>
                 <Image width='300px' height='400px' src={movie.posterURL} />
               </Link>
             </div>

@@ -1,3 +1,12 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles//colors';
+
+.wrap {
+  @include container;
+
+  background-color: $whiteColor;
+}
+
 .moviesWrap {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
